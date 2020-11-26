@@ -5,7 +5,7 @@
     "json-db": "json-server db.json",
     "ng": "ng",
     "ngserve": "ng serve --open",
-    "start": "npm-run-all --parallel json-db ngserve",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Restaurant } from '../restaurants/restaurant.model';
 import { RestaurantsService } from '../restaurants/restaurants.service';
 
@@ -16,8 +16,21 @@ export class RestaurantDetailComponent implements OnInit {
     ngOnInit(): void
     {
         const id = this.route.snapshot.params['id'];
-        
-        this.restaurantService.restaurantById(id).subscribe((restaurant: Restaurant) => this.restaurant = restaurant);
+        this.restaurantService.restaurantById(id).subscribe((restaurant: Restaurant) =>
+        {
+            this.restaurant = restaurant;
+            console.log(this.restaurant);
+        });
+
+        // this.route.params.subscribe((params: Params) =>
+        // {
+        //     const id = params['id'];
+            
+        // },
+        // error =>
+        // {
+        //     console.log(error);
+        // });
     }
 
 }

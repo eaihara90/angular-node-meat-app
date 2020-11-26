@@ -5,12 +5,14 @@ const app = require('./app');
 
 const server = http.Server(app);
 
-mongoose.createConnection(environment.uriDb, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+const startCore = async() => {
+    await mongoose.connect(environment.uriDb, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+    });
 
-server.listen(environment.PORT, () => console.log(`[SERVER] Listening on port ${environment.PORT}`));
+    server.listen(environment.PORT, () => console.log(`[SERVER] Listening on port ${environment.PORT}`));
+}
 
-
-
+startCore();
